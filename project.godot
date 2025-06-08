@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Pon in Your Face"
+config/name="Pong in Your Face"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
