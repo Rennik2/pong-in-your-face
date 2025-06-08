@@ -56,4 +56,6 @@ transform = Transform3D(0.999977, 0.00667691, -0.00131968, -0.00668257, 0.999968
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_7spsv")]
 
+[node name="Area3D" type="Area3D" parent="."]
+
 [connection signal="body_entered" from="ball" to="ball" method="_on_body_entered"]
