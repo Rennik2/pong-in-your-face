@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://corkd8bmp54ee"]
 
-[ext_resource type="ArrayMesh" uid="uid://difyrpetnjbaa" path="res://Models/pong_box.res" id="1_8w31r"]
-[ext_resource type="PackedScene" uid="uid://b3ux12tina00s" path="res://ball.tscn" id="2_4opyw"]
-[ext_resource type="Script" uid="uid://bjwvui3fg4qqk" path="res://score.gd" id="3_pkvn5"]
+[ext_resource type="ArrayMesh" uid="uid://difyrpetnjbaa" path="res://Models/pong_box.res" id="1_8nxyt"]
+[ext_resource type="PackedScene" uid="uid://b3ux12tina00s" path="res://Scenes/ball.tscn" id="2_6mn82"]
+[ext_resource type="PackedScene" uid="uid://deh0mdkufgl8" path="res://Scenes/in_game_menu.tscn" id="3_mu287"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8w31r"]
 sky_top_color = Color(0.245156, 0.450959, 0.725568, 1)
@@ -37,13 +37,14 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5)
 current = true
 fov = 90.0
+size = 5.06
 
 [node name="pong_box" type="StaticBody3D" parent="."]
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="pong_box"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
-mesh = ExtResource("1_8w31r")
+mesh = ExtResource("1_8nxyt")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pong_box"]
@@ -51,15 +52,10 @@ transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 
 shape = SubResource("ConcavePolygonShape3D_8w31r")
 debug_fill = false
 
-[node name="ball" parent="." instance=ExtResource("2_4opyw")]
+[node name="ball" parent="." instance=ExtResource("2_6mn82")]
+unique_name_in_owner = true
 transform = Transform3D(0.999977, 0.00667691, -0.00131968, -0.00668257, 0.999968, -0.00433026, 0.00129073, 0.00433898, 0.99999, 0, 3, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Score" type="Label" parent="CanvasLayer"]
-offset_right = 90.0
-offset_bottom = 23.0
-text = "Score:"
-script = ExtResource("3_pkvn5")
+[node name="CanvasLayer" parent="." instance=ExtResource("3_mu287")]
 
 [connection signal="body_entered" from="ball" to="ball" method="_on_body_entered"]

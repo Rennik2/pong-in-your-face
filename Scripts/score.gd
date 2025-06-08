@@ -2,4 +2,4 @@ extends Label
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "score: " + str(SceneData.score)
+	text = "Score: " + str(SceneData.score)
